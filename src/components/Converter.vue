@@ -1,10 +1,16 @@
 <template>
   <v-col class="m4" cols="10" lg="6">
     <v-row class="text-h4 mb-8">
-      <v-icon color="primary">mdi-link-variant</v-icon>
-      <h4 class="ml-2">
-        <a href="https://webvpn.bit.edu.cn/">WEBVPN</a> URL Converter
-      </h4>
+      <v-icon class="mr-2" color="primary">mdi-link-variant</v-icon>
+      <h4><a href="https://webvpn.bit.edu.cn/">WEBVPN</a> URL Converter</h4>
+    </v-row>
+
+    <v-row>
+      <p class="text--secondary mb-8">
+        🥑 <b>WEBVPN Converter</b> can help you convert a BIT local area network
+        URL into its corresponding WEBVPN URL so that you can access BIT local
+        resources from anywhere in the world.
+      </p>
     </v-row>
 
     <v-row align="center" justify="center">
@@ -15,12 +21,7 @@
       />
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-            @click="clearInputUrl"
-          >
+          <v-btn icon v-bind="attrs" v-on="on" @click="clearInputUrl">
             <v-icon>mdi-delete</v-icon>
           </v-btn>
         </template>
@@ -35,7 +36,29 @@
     </v-row>
 
     <v-row align="center" justify="center">
-      <v-text-field label="WEBVPN" v-model="webvpnUrl" readonly />
+      <v-text-field
+        label="WEBVPN"
+        v-model="webvpnUrl"
+        readonly
+        placeholder="https://webvpn.bit.edu.cn/..."
+      />
+
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            text
+            color="primary"
+            v-bind="attrs"
+            v-on="on"
+            target="_blank"
+            :href="webvpnUrl"
+          >
+            OPEN
+          </v-btn>
+        </template>
+        <span>Open URL in new tab</span>
+      </v-tooltip>
+
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
@@ -52,28 +75,52 @@
       </v-tooltip>
     </v-row>
 
-    <v-snackbar v-model="snackbar" max-width="100" rounded top timeout="2000">
-      <v-icon color="success">mdi-check</v-icon> Copied to clipboard!
+    <v-snackbar
+      v-model="snackbarCopy"
+      max-width="100"
+      rounded
+      top
+      timeout="2000"
+    >
+      <v-icon color="success">mdi-check</v-icon> {{ snackbarCopyNote }}
+    </v-snackbar>
+    <v-snackbar
+      v-model="snackbarNoInput"
+      max-width="100"
+      rounded
+      top
+      timeout="2000"
+    >
+      <v-icon color="error">mdi-alert</v-icon> You'll need to specify a URL
+      first.
     </v-snackbar>
   </v-col>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { convert } from './convert'
 
 export default Vue.extend({
   name: 'Converter',
 
   data: () => ({
-    snackbar: false,
+    snackbarCopy: false,
+    snackbarCopyNote: 'Copied to clipboard!',
+    snackbarNoInput: false,
     originalUrl: '',
-    webvpnUrl: 'https://webvpn.bit.edu.cn/...'
+    webvpnUrl: ''
   }),
 
   methods: {
     convert (): void {
       const originalUrl = this.originalUrl
-      console.log(originalUrl)
+      if (originalUrl === '') {
+        this.snackbarNoInput = !this.snackbarNoInput
+      } else {
+        const encryptedUrl = convert(originalUrl)
+        this.webvpnUrl = `https://webvpn.bit.edu.cn${encryptedUrl}`
+      }
     },
 
     clearInputUrl (): void {
@@ -81,8 +128,14 @@ export default Vue.extend({
     },
 
     copy (value: string): void {
-      console.log(value)
-      this.snackbar = !this.snackbar
+      if (this.webvpnUrl === '') {
+        value = 'https://webvpn.bit.edu.cn'
+        this.snackbarCopyNote = 'Default WEBVPN URL copied!'
+      }
+      console.log('Copied value:', value)
+      // eslint-disable-next-line
+      ;(this as any).$clipboard(value)
+      this.snackbarCopy = !this.snackbarCopy
     }
   }
 })
