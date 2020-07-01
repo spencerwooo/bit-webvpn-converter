@@ -1,8 +1,10 @@
 <template>
   <v-col class="m4" cols="10" lg="6">
-    <v-row class="text-h4 mb-8">
-      <v-icon class="mr-2" color="primary">mdi-link-variant</v-icon>
-      <h4><a href="https://webvpn.bit.edu.cn/">WEBVPN</a> URL Converter</h4>
+    <v-row class="text-h4 mb-4">
+      <h4>
+        <v-icon class="mr-2" color="primary">mdi-link-variant</v-icon
+        ><a href="https://webvpn.bit.edu.cn/">WEBVPN</a> URL Converter
+      </h4>
     </v-row>
 
     <v-row>
@@ -30,7 +32,7 @@
     </v-row>
 
     <v-row>
-      <v-btn class="mx-auto" color="primary" @click="convert">
+      <v-btn class="mx-auto my-4" color="primary" @click="convert">
         Convert <v-icon right>mdi-chevron-down</v-icon>
       </v-btn>
     </v-row>
@@ -75,6 +77,12 @@
       </v-tooltip>
     </v-row>
 
+    <!-- <v-row class="mt-8">
+      <p class="text--secondary text-uppercase">
+        Common resources
+      </p>
+    </v-row> -->
+
     <v-snackbar
       v-model="snackbarCopy"
       max-width="100"
@@ -91,7 +99,7 @@
       top
       timeout="2000"
     >
-      <v-icon color="error">mdi-alert</v-icon> You'll need to specify a URL
+      <v-icon color="warning">mdi-alert</v-icon> You'll need to specify a URL
       first.
     </v-snackbar>
   </v-col>
@@ -108,8 +116,30 @@ export default Vue.extend({
     snackbarCopy: false,
     snackbarCopyNote: 'Copied to clipboard!',
     snackbarNoInput: false,
+
     originalUrl: '',
     webvpnUrl: ''
+
+    // commonResources: [
+    //   {
+    //     name: '本科生教务系统 - 教学一体化服务平台',
+    //     category: '业务系统',
+    //     url: 'jwms.bit.edu.cn',
+    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421fae04c8f69326144300d8db9d6562d'
+    //   },
+    //   {
+    //     name: '软件正版化平台',
+    //     category: '业务系统',
+    //     url: 'ca.bit.edu.cn',
+    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421f3f60f9e2e2426557a1dc7af96'
+    //   },
+    //   {
+    //     name: '中国知网',
+    //     category: '图书馆常用数据库',
+    //     url: 'www.cnki.net',
+    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421e7e056d2243e635930068cb8'
+    //   }
+    // ]
   }),
 
   methods: {
@@ -140,3 +170,13 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style scoped>
+.v-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.v-card.on-hover {
+  border: thin solid var(--v-primary-base);
+}
+</style>

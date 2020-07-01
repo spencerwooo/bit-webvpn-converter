@@ -43,7 +43,7 @@
         </v-btn> -->
         <v-col class="py-4 text-center black--text" cols="12">
           ©{{ new Date().getFullYear() }} —
-          <strong>Built with love at BIT</strong>
+          <strong>Built with love at <a href="http://www.bit.edu.cn/" target="_blank">BIT</a></strong>
         </v-col>
       </v-row>
     </v-footer>
@@ -64,7 +64,6 @@ export default Vue.extend({
   data: () => ({
     // links: [
     //   { name: 'Spencer Woo', link: 'https://spencerwoo.com' },
-    //   { name: 'Spencer Woo', link: 'https://spencerwoo.com' }
     // ]
   })
 })
