@@ -3,7 +3,8 @@
     <v-row class="text-h4 mb-4">
       <h4>
         <v-icon class="mr-2" color="primary">mdi-link-variant</v-icon
-        ><a href="https://webvpn.bit.edu.cn/">WEBVPN</a> URL Converter
+        ><a href="https://webvpn.bit.edu.cn/" target="_blank">WEBVPN</a> URL
+        Converter
       </h4>
     </v-row>
 
@@ -77,11 +78,35 @@
       </v-tooltip>
     </v-row>
 
-    <!-- <v-row class="mt-8">
+    <v-row class="mt-8">
       <p class="text--secondary text-uppercase">
         Common resources
       </p>
-    </v-row> -->
+    </v-row>
+
+    <v-row>
+      <template v-for="resource in commonResources">
+        <v-hover v-slot:default="{ hover }" :key="resource.url">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-chip
+                :class="hover ? 'mr-2 on-hover' : 'mr-2'"
+                :href="encryptUrl(resource.url)"
+                target="_blank"
+                v-bind="attrs"
+                v-on="on"
+                outlined
+                label
+              >
+                {{ resource.name }}
+                <v-icon small right color="primary">mdi-open-in-new</v-icon>
+              </v-chip>
+            </template>
+            <span>{{ resource.url }}</span>
+          </v-tooltip>
+        </v-hover>
+      </template>
+    </v-row>
 
     <v-snackbar
       v-model="snackbarCopy"
@@ -118,28 +143,26 @@ export default Vue.extend({
     snackbarNoInput: false,
 
     originalUrl: '',
-    webvpnUrl: ''
+    webvpnUrl: '',
 
-    // commonResources: [
-    //   {
-    //     name: '本科生教务系统 - 教学一体化服务平台',
-    //     category: '业务系统',
-    //     url: 'jwms.bit.edu.cn',
-    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421fae04c8f69326144300d8db9d6562d'
-    //   },
-    //   {
-    //     name: '软件正版化平台',
-    //     category: '业务系统',
-    //     url: 'ca.bit.edu.cn',
-    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421f3f60f9e2e2426557a1dc7af96'
-    //   },
-    //   {
-    //     name: '中国知网',
-    //     category: '图书馆常用数据库',
-    //     url: 'www.cnki.net',
-    //     encryptedUrl: 'https://webvpn.bit.edu.cn/http/77726476706e69737468656265737421e7e056d2243e635930068cb8'
-    //   }
-    // ]
+    commonResources: [
+      {
+        name: '本科生教务系统',
+        url: 'jwms.bit.edu.cn'
+      },
+      {
+        name: '学生评教系统',
+        url: 'pj.bit.edu.cn'
+      },
+      {
+        name: '软件正版化平台',
+        url: 'ca.bit.edu.cn'
+      },
+      {
+        name: '中国知网',
+        url: 'www.cnki.net'
+      }
+    ]
   }),
 
   methods: {
@@ -148,9 +171,12 @@ export default Vue.extend({
       if (originalUrl === '') {
         this.snackbarNoInput = !this.snackbarNoInput
       } else {
-        const encryptedUrl = convert(originalUrl)
-        this.webvpnUrl = `https://webvpn.bit.edu.cn${encryptedUrl}`
+        this.webvpnUrl = this.encryptUrl(originalUrl)
       }
+    },
+
+    encryptUrl (url: string): string {
+      return `https://webvpn.bit.edu.cn${convert(url)}`
     },
 
     clearInputUrl (): void {
@@ -172,11 +198,11 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.v-card {
+.v-chip {
   transition: all 0.2s ease-in-out;
 }
 
-.v-card.on-hover {
+.v-chip.on-hover {
   border: thin solid var(--v-primary-base);
 }
 </style>
