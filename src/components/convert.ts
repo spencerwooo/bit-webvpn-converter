@@ -54,11 +54,11 @@ const encryptUrl = (url: string) => {
   let port = ''
   let segments = []
   let protocol = 'http'
-  let knownProto = ['http', 'https', 'ssh', 'vnc', 'telnet']
+  const knownProto = ['http', 'https', 'ssh', 'vnc', 'telnet']
 
   for (const proto of knownProto) {
-    let protoLength = proto.length + 3
-    if (url.substring(0, protoLength) === proto+"://"){
+    const protoLength = proto.length + 3
+    if (url.substring(0, protoLength) === proto + '://') {
       protocol = proto
       url = url.substr(protoLength)
       break
