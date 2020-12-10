@@ -53,16 +53,16 @@ const decrypt = (text: string, key: string) => {
 const encryptUrl = (url: string) => {
   let port = ''
   let segments = []
-  let protocol = ''
+  let protocol = 'http'
+  let knownProto = ['http', 'https', 'ssh', 'vnc', 'telnet']
 
-  if (url.substring(0, 7) === 'http://') {
-    protocol = 'http'
-    url = url.substr(7)
-  } else if (url.substring(0, 8) === 'https://') {
-    protocol = 'https'
-    url = url.substr(8)
-  } else {
-    protocol = 'http'
+  for (const proto of knownProto) {
+    let protoLength = proto.length + 3
+    if (url.substring(0, protoLength) === proto+"://"){
+      protocol = proto
+      url = url.substr(protoLength)
+      break
+    }
   }
 
   let v6 = ''
