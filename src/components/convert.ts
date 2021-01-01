@@ -58,7 +58,7 @@ const encryptUrl = (url: string) => {
 
   for (const proto of knownProto) {
     const protoLength = proto.length + 3
-    if (url.substring(0, protoLength) === proto + '://') {
+    if (url.substring(0, protoLength).toLowerCase() === proto + '://') {
       protocol = proto
       url = url.substr(protoLength)
       break
