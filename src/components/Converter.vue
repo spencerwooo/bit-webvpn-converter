@@ -33,12 +33,12 @@
     </v-row>
 
     <v-row align="center" justify="center" class="my-4">
-      <v-col cols="12" lg="4" class="text-center">
+      <v-col cols="12" sm="4" class="text-center">
         <v-btn class="mx-auto" color="default" @click="convert(true)">
           <v-icon left>mdi-school</v-icon>LibVPN
         </v-btn>
       </v-col>
-      <v-col cols="12" lg="4" class="text-center">
+      <v-col cols="12" sm="4" class="text-center">
         <v-btn class="mx-auto" color="primary" @click="convert(false)">
           <v-icon left>mdi-lan</v-icon>WEBVPN
         </v-btn>
