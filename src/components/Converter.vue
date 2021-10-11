@@ -32,13 +32,17 @@
       </v-tooltip>
     </v-row>
 
-    <v-row>
-      <v-btn class="ml-auto mr-16 my-4" color="default" @click="convert(true)">
-        <v-icon left>mdi-book-open-blank-variant</v-icon>LibVPN <v-icon right>mdi-chevron-down</v-icon>
-      </v-btn>
-      <v-btn class="mr-auto my-4" color="primary" @click="convert(false)">
-        Convert <v-icon right>mdi-chevron-down</v-icon>
-      </v-btn>
+    <v-row align="center" justify="center" class="my-4">
+      <v-col cols="12" lg="4" class="text-center">
+        <v-btn class="mx-auto" color="default" @click="convert(true)">
+          <v-icon left>mdi-school</v-icon>LibVPN
+        </v-btn>
+      </v-col>
+      <v-col cols="12" lg="4" class="text-center">
+        <v-btn class="mx-auto" color="primary" @click="convert(false)">
+          <v-icon left>mdi-lan</v-icon>WEBVPN
+        </v-btn>
+      </v-col>
     </v-row>
 
     <v-row align="center" justify="center">
