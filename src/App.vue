@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" light flat rounded>
+    <v-app-bar color="white" light flat rounded>
       <div class="d-flex align-center">
         <v-btn icon color="primary">
           <v-icon>mdi-heart</v-icon>
