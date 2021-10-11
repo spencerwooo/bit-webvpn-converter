@@ -169,7 +169,7 @@ export default Vue.extend({
   }),
 
   methods: {
-    convert (isLib: boolean = false): void {
+    convert (isLib = false): void {
       const originalUrl = this.originalUrl
       if (originalUrl === '') {
         this.snackbarNoInput = !this.snackbarNoInput
@@ -181,8 +181,8 @@ export default Vue.extend({
         }
       }
     },
-    
-    encryptLibVPN(url: string): string {
+
+    encryptLibVPN (url: string): string {
       return `https://libvpn.bit.edu.cn${convert(url)}`
     },
 
