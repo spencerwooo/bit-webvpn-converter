@@ -33,7 +33,10 @@
     </v-row>
 
     <v-row>
-      <v-btn class="mx-auto my-4" color="primary" @click="convert">
+      <v-btn class="ml-auto mr-16 my-4" color="default" @click="convert(true)">
+        <v-icon left>mdi-book-open-blank-variant</v-icon>LibVPN <v-icon right>mdi-chevron-down</v-icon>
+      </v-btn>
+      <v-btn class="mr-auto my-4" color="primary" @click="convert(false)">
         Convert <v-icon right>mdi-chevron-down</v-icon>
       </v-btn>
     </v-row>
@@ -166,13 +169,21 @@ export default Vue.extend({
   }),
 
   methods: {
-    convert (): void {
+    convert (isLib: boolean = false): void {
       const originalUrl = this.originalUrl
       if (originalUrl === '') {
         this.snackbarNoInput = !this.snackbarNoInput
       } else {
-        this.webvpnUrl = this.encryptUrl(originalUrl)
+        if (isLib) {
+          this.webvpnUrl = this.encryptLibVPN(originalUrl)
+        } else {
+          this.webvpnUrl = this.encryptUrl(originalUrl)
+        }
       }
+    },
+    
+    encryptLibVPN(url: string): string {
+      return `https://libvpn.bit.edu.cn${convert(url)}`
     },
 
     encryptUrl (url: string): string {
