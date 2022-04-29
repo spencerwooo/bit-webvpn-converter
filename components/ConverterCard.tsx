@@ -15,17 +15,19 @@ import { convert } from '../lib/convert'
 const prefix = { web: 'https://webvpn.bit.edu.cn', lib: 'https://libvpn.bit.edu.cn' }
 
 const ConverterCard = () => {
+  const [enteredUrl, setEnteredUrl] = useState('')
   const [urlPrefix, setUrlPrefix] = useState(prefix.web)
   const [userEntering, setUserEntering] = useState(false)
   const [convertedUrl, setConvertedUrl] = useState('')
   const [isCopied, setCopied] = useClipboard(convertedUrl, { successDuration: 2000 })
 
   // debounced callback so that the converter function doesn't get called on every keystroke
-  const debounced = useDebouncedCallback((url: string) => {
+  const encryptUrl = (url: string, prefix: string) => setConvertedUrl(url === '' ? '' : prefix + convert(url))
+  const debounced = useDebouncedCallback((url: string, prefix: string) => {
     // set loading state to false after user stopped entering
     setUserEntering(false)
-    // set converted url to the result of the conversion
-    setConvertedUrl(url === '' ? '' : urlPrefix + convert(url))
+    // set converted url to the encrypted result
+    encryptUrl(url, prefix)
   }, 500)
 
   return (
@@ -35,7 +37,8 @@ const ConverterCard = () => {
         type="url"
         onChange={e => {
           setUserEntering(true)
-          debounced(e.target.value)
+          setEnteredUrl(e.target.value)
+          debounced(e.target.value, urlPrefix)
         }}
         className="bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none focus:ring-orange-200 focus:border-orange-200 block w-full p-2 transition-all duration-150"
         required
@@ -47,7 +50,10 @@ const ConverterCard = () => {
           className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
             urlPrefix === prefix.web ? 'bg-zinc-900' : 'bg-zinc-700'
           }`}
-          onClick={() => setUrlPrefix(prefix.web)}
+          onClick={() => {
+            setUrlPrefix(prefix.web)
+            encryptUrl(enteredUrl, prefix.web)
+          }}
         >
           Web VPN
         </button>
@@ -55,7 +61,10 @@ const ConverterCard = () => {
           className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
             urlPrefix === prefix.lib ? 'bg-zinc-900' : 'bg-zinc-700'
           }`}
-          onClick={() => setUrlPrefix(prefix.lib)}
+          onClick={() => {
+            setUrlPrefix(prefix.lib)
+            encryptUrl(enteredUrl, prefix.lib)
+          }}
         >
           Library VPN
         </button>
