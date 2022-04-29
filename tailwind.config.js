@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'nanum': ['"Nanum Pen Script"', 'cursive'],
+      }
+    },
   },
   plugins: [],
 }
