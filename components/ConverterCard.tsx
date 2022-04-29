@@ -1,26 +1,42 @@
 import { useState } from 'react'
-import { RiArrowDownLine, RiCheckLine, RiClipboardLine, RiExternalLinkLine, RiSubtractLine } from 'react-icons/ri'
 import useClipboard from 'react-use-clipboard'
-import { useDebounce } from 'use-debounce'
+import { useDebouncedCallback } from 'use-debounce'
+import {
+  RiArrowDownLine,
+  RiCheckLine,
+  RiClipboardLine,
+  RiExternalLinkLine,
+  RiLoaderLine,
+  RiSubtractLine,
+} from 'react-icons/ri'
 
 import { convert } from '../lib/convert'
 
 const prefix = { web: 'https://webvpn.bit.edu.cn', lib: 'https://libvpn.bit.edu.cn' }
 
 const ConverterCard = () => {
-  const [originalUrl, setOriginalUrl] = useState('')
   const [urlPrefix, setUrlPrefix] = useState(prefix.web)
-  const [debouncedUrl] = useDebounce(originalUrl, 1000)
+  const [userEntering, setUserEntering] = useState(false)
+  const [convertedUrl, setConvertedUrl] = useState('')
+  const [isCopied, setCopied] = useClipboard(convertedUrl, { successDuration: 2000 })
 
-  const convertedUrl = urlPrefix + (debouncedUrl === '' ? debouncedUrl : convert(debouncedUrl))
-  const [isCopied, setCopied] = useClipboard(convertedUrl, { successDuration: 1500 })
+  // debounced callback so that the converter function doesn't get called on every keystroke
+  const debounced = useDebouncedCallback((url: string) => {
+    // set loading state to false after user stopped entering
+    setUserEntering(false)
+    // set converted url to the result of the conversion
+    setConvertedUrl(url === '' ? '' : urlPrefix + convert(url))
+  }, 1000)
 
   return (
     <div className="border border-zinc-400/30 w-full max-w-xl lg:max-w-3xl p-4 rounded-lg">
       <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">Original URL</label>
       <input
         type="url"
-        onChange={e => setOriginalUrl(e.target.value)}
+        onChange={e => {
+          setUserEntering(true)
+          debounced(e.target.value)
+        }}
         className="bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none focus:ring-orange-200 focus:border-orange-200 block w-full p-2 transition-all duration-150"
         required
       />
@@ -47,7 +63,15 @@ const ConverterCard = () => {
       <RiArrowDownLine className="w-full mb-2 h-5" />
 
       <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-orange-50">Converted URL</label>
-      <div className="flex items-center">
+      <div className="flex items-center relative">
+        <div
+          className={`absolute top-0 bottom-0 left-0 right-0 bg-zinc-900/60 flex items-center justify-center transition-all duration-150 ${
+            userEntering ? 'opacity-100' : 'opacity-0 -z-10'
+          }`}
+        >
+          <RiLoaderLine className="animate-spin" />
+        </div>
+
         <input
           type="url"
           value={convertedUrl}
@@ -56,7 +80,11 @@ const ConverterCard = () => {
           readOnly
         />
 
-        <button onClick={setCopied} className="flex items-center px-2 hover:opacity-80 transition-all duration-150">
+        <button
+          onClick={setCopied}
+          className="flex items-center pl-3 pr-2 hover:opacity-80 transition-all duration-150 disabled:opacity-60"
+          disabled={userEntering}
+        >
           {isCopied ? <RiCheckLine /> : <RiClipboardLine />}{' '}
           <span className="uppercase tracking-wider ml-1 text-sm">copy</span>
         </button>
@@ -64,7 +92,9 @@ const ConverterCard = () => {
           href={convertedUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center pl-1 hover:opacity-80 transition-all duration-150"
+          className={`flex items-center pl-1 hover:opacity-80 transition-all duration-150 ${
+            userEntering && 'opacity-60 cursor-not-allowed pointer-events-none'
+          }`}
         >
           <RiExternalLinkLine className="inline-block" />
           <span className="uppercase tracking-wider ml-1 text-sm">open</span>
