@@ -29,13 +29,9 @@ const encrypt = (text: string, key: string, iv: string) => {
   const aesCfb = new AesCfb(keyBytes, ivBytes, 16)
   const encryptBytes = aesCfb.encrypt(textBytes)
 
-  return (
-    hex.fromBytes(ivBytes) +
-    hex.fromBytes(encryptBytes).slice(0, textLength * 2)
-  )
+  return hex.fromBytes(ivBytes) + hex.fromBytes(encryptBytes).slice(0, textLength * 2)
 }
 
-// eslint-disable-next-line
 const decrypt = (text: string, key: string) => {
   const textLength = (text.length - 32) / 2
   text = textRightAppend(text, 'hex')
@@ -75,9 +71,7 @@ const encryptUrl = (url: string) => {
   segments = url.split('?')[0].split(':')
   if (segments.length > 1) {
     port = segments[1].split('/')[0]
-    url =
-      url.substr(0, segments[0].length) +
-      url.substr(segments[0].length + port.length + 1)
+    url = url.substr(0, segments[0].length) + url.substr(segments[0].length + port.length + 1)
   }
 
   const i = url.indexOf('/')
