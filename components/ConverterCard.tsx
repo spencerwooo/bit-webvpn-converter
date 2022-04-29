@@ -26,7 +26,7 @@ const ConverterCard = () => {
     setUserEntering(false)
     // set converted url to the result of the conversion
     setConvertedUrl(url === '' ? '' : urlPrefix + convert(url))
-  }, 1000)
+  }, 500)
 
   return (
     <div className="border border-zinc-400/30 w-full max-w-lg md:max-w-3xl p-4 rounded-lg">
