@@ -25,12 +25,14 @@ const Home: NextPage = () => {
             <h1 className="px-2 pb-3 text-4xl font-black leading-tight text-center md:text-6xl bg-clip-text text-transparent bg-gradient-to-tr from-orange-100 via-orange-200 to-gray-50">
               Web VPN converter.
             </h1>
-            <div className="absolute -rotate-12 -top-10 -right-10 text-4xl font-nanum">for BIT</div>
+            <div className="absolute -rotate-12 -top-10 right-0 md:-right-10 text-4xl font-nanum">for BIT</div>
           </div>
 
           <p className="max-w-xl px-2 pb-8 text-center leading-2 lg:leading-6 text-gray-400">
-            Convert BIT local network URLs into Web VPN URLs. <br />
-            <span className="hidden md:block">Connect to your local networks in BIT from anywhere in the world.</span>
+            <span className="hidden md:block">
+              Convert BIT local network URLs into Web VPN URLs. <br />
+            </span>
+            <span>Connect to your local networks in BIT from anywhere in the world.</span>
           </p>
 
           <ConverterCard />

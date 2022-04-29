@@ -29,7 +29,7 @@ const ConverterCard = () => {
   }, 1000)
 
   return (
-    <div className="border border-zinc-400/30 w-full max-w-xl lg:max-w-3xl p-4 rounded-lg">
+    <div className="border border-zinc-400/30 w-full max-w-lg md:max-w-3xl p-4 rounded-lg">
       <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">Original URL</label>
       <input
         type="url"
