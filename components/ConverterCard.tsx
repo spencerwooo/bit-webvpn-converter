@@ -31,7 +31,7 @@ const ConverterCard = () => {
   }, 500)
 
   return (
-    <div className="border border-zinc-400/30 w-full max-w-lg md:max-w-3xl p-4 rounded-lg">
+    <div className="border border-zinc-400/30 p-4 rounded-lg w-full">
       <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">Original URL</label>
       <input
         type="url"
@@ -73,13 +73,13 @@ const ConverterCard = () => {
 
       <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-orange-50">Converted URL</label>
       <div className="flex items-center relative">
-        <div
+        <span
           className={`absolute top-0 bottom-0 left-0 right-0 bg-zinc-900/60 flex items-center justify-center transition-all duration-150 ${
             userEntering ? 'opacity-100' : 'opacity-0 -z-10'
           }`}
         >
           <RiLoaderLine className="animate-spin" />
-        </div>
+        </span>
 
         <input
           type="url"
