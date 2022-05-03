@@ -42,6 +42,7 @@ const ConverterCard = () => {
         }}
         className="bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none focus:ring-orange-200 focus:border-orange-200 block w-full p-2 transition-all duration-150"
         required
+        autoFocus
       />
 
       <RiSubtractLine className="w-full mt-4 h-5 rotate-90" />

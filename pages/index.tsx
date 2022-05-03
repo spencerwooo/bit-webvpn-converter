@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <title>Web VPN converter</title>
       </Head>
 
-      <main className="flex-1 flex flex-col justify-center items-center space-y-4 p-4 mx-auto max-w-lg md:max-w-3xl">
+      <main className="flex-1 flex flex-col justify-center items-center space-y-4 p-4 mx-auto">
         <ShootingStars />
 
         <div className="relative">
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <div className="absolute -rotate-12 -top-10 right-0 md:-right-10 text-4xl font-nanum">for BIT</div>
         </div>
 
-        <p className="text-center leading-2 lg:leading-6 text-gray-400">
+        <p className="text-center leading-2 py-4 lg:leading-6 text-gray-400">
           <span className="hidden md:block">
             Convert BIT local network URLs into Web VPN URLs. <br />
           </span>

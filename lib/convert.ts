@@ -56,7 +56,7 @@ const encryptUrl = (url: string) => {
     const protoLength = proto.length + 3
     if (url.substring(0, protoLength).toLowerCase() === proto + '://') {
       protocol = proto
-      url = url.substr(protoLength)
+      url = url.substring(protoLength)
       break
     }
   }
@@ -71,7 +71,7 @@ const encryptUrl = (url: string) => {
   segments = url.split('?')[0].split(':')
   if (segments.length > 1) {
     port = segments[1].split('/')[0]
-    url = url.substr(0, segments[0].length) + url.substr(segments[0].length + port.length + 1)
+    url = url.substring(0, segments[0].length) + url.substring(segments[0].length + port.length + 1)
   }
 
   const i = url.indexOf('/')
