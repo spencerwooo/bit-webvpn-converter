@@ -46,7 +46,7 @@ const decrypt = (text: string, key: string) => {
   return utf8.fromBytes(decryptBytes).slice(0, textLength)
 }
 
-const encryptUrl = (url: string) => {
+export const encryptUrl = (url: string) => {
   let port = ''
   let segments = []
   let protocol = 'http'
@@ -98,6 +98,27 @@ const encryptUrl = (url: string) => {
   return url
 }
 
-export const convert = (value: string) => {
-  return encryptUrl(value)
+export const decryptUrl = (rawUrl: string) => {
+  try {
+    if (!rawUrl) return { url: '', error: null }
+
+    const url = new URL(rawUrl)
+    const pathname = url.pathname
+
+    // This produces an array of segments similar to:
+    // ['', 'http-5000', '777264767...2a46d8ffc0', 'xxx', ...]
+    const segments = pathname.split('/')
+
+    const [protocol, port] = segments[1].split('-')
+    const decrypted = decrypt(segments[2], 'wrdvpnisthebest!')
+    const remainingSegments = segments.slice(3).join('/')
+
+    return { url: `${protocol}://${decrypted}${port ? ':' + port : ''}/${remainingSegments}`, error: null }
+  } catch (error: unknown) {
+    if (typeof error === 'string') {
+      return { url: '', error }
+    } else {
+      return { url: '', error: 'Unknown error, check your URL.' }
+    }
+  }
 }

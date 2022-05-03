@@ -6,7 +6,7 @@ const Footer = () => (
       href="https://spencerwoo.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="underline text-orange-200 hover:text-orange-300 transition-all duration-150"
+      className="underline opacity-80 hover:opacity-100 transition-all duration-150"
     >
       Spencer Woo
     </a>{' '}
