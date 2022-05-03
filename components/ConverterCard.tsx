@@ -31,8 +31,8 @@ const ConverterCard = () => {
   }, 500)
 
   return (
-    <div className="border border-zinc-400/30 p-4 rounded-lg w-full">
-      <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-gray-300">Original URL</label>
+    <div className="border border-zinc-400/30 p-4 rounded-lg">
+      <label className="text-xs font-medium uppercase tracking-wider text-gray-300">Original URL</label>
       <input
         type="url"
         onChange={e => {
@@ -40,40 +40,42 @@ const ConverterCard = () => {
           setEnteredUrl(e.target.value)
           debounced(e.target.value, urlPrefix)
         }}
-        className="bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none focus:ring-orange-200 focus:border-orange-200 block w-full p-2 transition-all duration-150"
+        className="bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none focus:ring-orange-200 focus:border-orange-200 block w-full my-2 p-2 transition-all duration-150"
         required
         autoFocus
       />
 
-      <RiSubtractLine className="w-full mt-4 h-5 rotate-90" />
-      <div className="p-1 font-nanum text-xl w-full rounded bg-zinc-700 grid grid-cols-2">
-        <button
-          className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
-            urlPrefix === prefix.web ? 'bg-zinc-900' : 'bg-zinc-700'
-          }`}
-          onClick={() => {
-            setUrlPrefix(prefix.web)
-            encryptUrl(enteredUrl, prefix.web)
-          }}
-        >
-          Web VPN
-        </button>
-        <button
-          className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
-            urlPrefix === prefix.lib ? 'bg-zinc-900' : 'bg-zinc-700'
-          }`}
-          onClick={() => {
-            setUrlPrefix(prefix.lib)
-            encryptUrl(enteredUrl, prefix.lib)
-          }}
-        >
-          Library VPN
-        </button>
+      <div className="my-2">
+        <RiSubtractLine className="h-5 rotate-90 mx-auto" />
+        <div className="p-1 font-nanum text-xl rounded bg-zinc-700 grid grid-cols-2">
+          <button
+            className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
+              urlPrefix === prefix.web ? 'bg-zinc-900' : 'bg-zinc-700'
+            }`}
+            onClick={() => {
+              setUrlPrefix(prefix.web)
+              encryptUrl(enteredUrl, prefix.web)
+            }}
+          >
+            Web VPN
+          </button>
+          <button
+            className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
+              urlPrefix === prefix.lib ? 'bg-zinc-900' : 'bg-zinc-700'
+            }`}
+            onClick={() => {
+              setUrlPrefix(prefix.lib)
+              encryptUrl(enteredUrl, prefix.lib)
+            }}
+          >
+            Library VPN
+          </button>
+        </div>
+        <RiArrowDownLine className="h-5 mx-auto" />
       </div>
-      <RiArrowDownLine className="w-full mb-2 h-5" />
 
-      <label className="block mb-2 text-xs font-medium uppercase tracking-wider text-orange-50">Converted URL</label>
-      <div className="flex items-center relative">
+      <label className="text-xs font-medium uppercase tracking-wider text-orange-50">Converted URL</label>
+      <div className="mt-2 flex items-center relative">
         <span
           className={`absolute top-0 bottom-0 left-0 right-0 bg-zinc-900/60 flex items-center justify-center transition-all duration-150 ${
             userEntering ? 'opacity-100' : 'opacity-0 -z-10'
