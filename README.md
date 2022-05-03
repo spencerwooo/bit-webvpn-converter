@@ -40,3 +40,8 @@ pnpm install
 pnpm dev
 pnpm build
 ```
+
+## Changelog
+
+* `May 3, 2022` - Add support for forward converter and reverse *retrevnoc*.
+* `Apr 29, 2022` - Migrate from Vue to Next.js with Tailwind CSS.

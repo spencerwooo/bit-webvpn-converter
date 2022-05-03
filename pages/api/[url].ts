@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { convert } from '../../lib/convert'
+import { encryptUrl } from '../../lib/convert'
 
 const prefixOptions = { web: 'https://webvpn.bit.edu.cn', lib: 'https://libvpn.bit.edu.cn' } as const
 
@@ -21,7 +21,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return
   }
 
-  const encryptedUrl = prefixOptions[prefix as keyof typeof prefixOptions] + convert(url)
+  const encryptedUrl = prefixOptions[prefix as keyof typeof prefixOptions] + encryptUrl(url)
 
   // next.js query parameter does not parse boolean directly, so we have to do a string compare
   if (redirect === 'true') {
