@@ -50,7 +50,7 @@ export const encryptUrl = (url: string) => {
   let port = ''
   let segments = []
   let protocol = 'http'
-  const knownProto = ['http', 'https', 'ssh', 'vnc', 'telnet']
+  const knownProto = ['http', 'https', 'ssh', 'vnc', 'telnet', 'rdp']
 
   for (const proto of knownProto) {
     const protoLength = proto.length + 3
