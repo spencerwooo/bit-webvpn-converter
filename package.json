@@ -12,23 +12,24 @@
     "@fontsource/nanum-pen-script": "^4.5.3",
     "aes-js": "^3.1.2",
     "lottie-react": "^2.2.1",
-    "next": "12.1.5",
+    "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1",
     "react-use-clipboard": "^1.0.8",
-    "use-debounce": "^7.0.1"
+    "react-use-window-localstorage": "^1.0.17",
+    "use-debounce": "^8.0.1"
   },
   "devDependencies": {
     "@types/aes-js": "^3.1.1",
-    "@types/node": "17.0.30",
-    "@types/react": "18.0.8",
-    "@types/react-dom": "18.0.3",
+    "@types/node": "17.0.40",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.5",
-    "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5",
+    "eslint": "8.17.0",
+    "eslint-config-next": "12.1.6",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.24",
-    "typescript": "4.6.4"
+    "typescript": "4.7.3"
   }
 }
