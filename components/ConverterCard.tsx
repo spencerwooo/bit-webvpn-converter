@@ -180,9 +180,11 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
           </label>
           <div className="flex flex-wrap gap-2 mt-2">
             {history.map((url: string, index: number) => (
-              <div className="flex items-center bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-150">
+              <div
+                key={index}
+                className="flex items-center bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-150"
+              >
                 <button
-                  key={index}
                   className="tracking-wider p-2"
                   onClick={() => {
                     setEnteredUrl(url)
