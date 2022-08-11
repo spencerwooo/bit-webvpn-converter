@@ -185,7 +185,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 className="flex items-center bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-150"
               >
                 <button
-                  className="tracking-wider p-2"
+                  className="tracking-wider p-2 text-left break-all"
                   onClick={() => {
                     setEnteredUrl(url)
                     setUserEntering(true)
