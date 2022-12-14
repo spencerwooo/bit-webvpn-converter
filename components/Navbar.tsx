@@ -17,15 +17,17 @@ const NavLink = ({
         rel: 'noopener noreferrer',
       }
     : {}
-  const elem = (
-    <a
-      className="p-2 text-center text-sm font-medium uppercase tracking-wider rounded dark:text-orange-50 hover:opacity-80 transition-all duration-50"
-      {...options}
-    >
+  const classnames =
+    'p-2 text-center text-sm font-medium uppercase tracking-wider rounded dark:text-orange-50 hover:opacity-80 transition-all duration-50'
+  return isExternal ? (
+    <a className={classnames} {...options}>
       {children}
     </a>
+  ) : (
+    <Link href={href} className={classnames} {...options}>
+      {children}
+    </Link>
   )
-  return isExternal ? elem : <Link href={href}>{elem}</Link>
 }
 
 const Navbar = () => {

@@ -113,7 +113,10 @@ export const decryptUrl = (rawUrl: string) => {
     const decrypted = decrypt(segments[2], 'wrdvpnisthebest!')
     const remainingSegments = segments.slice(3).join('/')
 
-    return { url: `${protocol}://${decrypted}${port ? ':' + port : ''}/${remainingSegments}`, error: null }
+    return {
+      url: `${protocol}://${decrypted}${port ? ':' + port : ''}/${remainingSegments}`,
+      error: null,
+    }
   } catch (error: unknown) {
     if (typeof error === 'string') {
       return { url: '', error }

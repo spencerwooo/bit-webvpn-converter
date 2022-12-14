@@ -33,8 +33,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
   const [history, setHistory] = useLocalStorageObject('history', [])
 
   // debounced callback so that the converter function doesn't get called on every keystroke
-  const encrypt = (url: string, prefix: string) =>
-    setConvertedUrl(url === '' ? '' : prefix + encryptUrl(url))
+  const encrypt = (url: string, prefix: string) => setConvertedUrl(url === '' ? '' : prefix + encryptUrl(url))
   const decrypt = (url: string) => {
     const { url: decryptedUrl, error } = decryptUrl(url)
     if (error) {
@@ -60,21 +59,15 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
         </label>
         <input
           type="url"
-          placeholder={
-            reverse
-              ? 'https://webvpn.bit.edu.cn/...'
-              : 'https | ssh | vnc | telnet | rdp://...'
-          }
+          placeholder={reverse ? 'https://webvpn.bit.edu.cn/...' : 'https | ssh | vnc | telnet | rdp://...'}
           value={enteredUrl}
-          onChange={e => {
+          onChange={(e) => {
             setUserEntering(true)
             setEnteredUrl(e.target.value)
             debounced(e.target.value, urlPrefix)
           }}
           className={`dark:bg-zinc-800 border border-zinc-400/30 dark:border-zinc-700 dark:text-zinc-300 rounded focus:outline-none block w-full my-2 p-2 transition-all duration-50 ${
-            reverse
-              ? 'focus:ring-purple-400 focus:border-purple-400'
-              : 'focus:ring-orange-400 focus:border-orange-400'
+            reverse ? 'focus:ring-purple-400 focus:border-purple-400' : 'focus:ring-orange-400 focus:border-orange-400'
           }`}
           required
           autoFocus
@@ -84,9 +77,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
           <RiSubtractLine className="h-5 rotate-90 mx-auto" />
           {reverse ? (
             <div className="text-center">
-              <span className="px-2 py-1 font-nanum text-xl rounded dark:bg-zinc-800">
-                decrypt
-              </span>
+              <span className="px-2 py-1 font-nanum text-xl rounded dark:bg-zinc-800">decrypt</span>
             </div>
           ) : (
             <div className="p-1 font-nanum text-xl rounded bg-zinc-100 dark:bg-zinc-700 grid grid-cols-2">
@@ -117,9 +108,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
           <RiArrowDownLine className="h-5 mx-auto" />
         </div>
 
-        <label className="text-xs font-medium uppercase tracking-wider">
-          Converted URL
-        </label>
+        <label className="text-xs font-medium uppercase tracking-wider">Converted URL</label>
         <div className="mt-2 flex items-center relative">
           <span
             className={`rounded absolute top-0 bottom-0 left-0 right-0 bg-zinc-300/90 dark:bg-zinc-900/90 flex items-center justify-center transition-all duration-50 ${
@@ -175,9 +164,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
 
       {history.length > 0 && !reverse && (
         <div className="my-4 text-sm">
-          <label className="font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300">
-            History
-          </label>
+          <label className="font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300">History</label>
           <div className="flex flex-wrap gap-2 mt-2">
             {history.map((url: string, index: number) => (
               <div
@@ -198,9 +185,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 <button
                   className="p-1 h-full group rounded bg-orange-400 hover:opacity-80 transition-all duration-50"
                   onClick={() => {
-                    setHistory(
-                      history.filter((_: string, i: number) => i !== index)
-                    )
+                    setHistory(history.filter((_: string, i: number) => i !== index))
                   }}
                 >
                   <RiDeleteBin2Line />

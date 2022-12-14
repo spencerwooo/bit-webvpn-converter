@@ -1,6 +1,6 @@
 # Web VPN Converter
 
-*Connect to your local networks in BIT from anywhere in the world.*
+_Connect to your local networks in BIT from anywhere in the world._
 
 ## Demo
 
@@ -18,8 +18,8 @@ Note that `ENCODED_URL` must be URL encoded.
 
 ### Optional params
 
-* `prefix`: Must be one of `web` (default) or `lib`. Adds either `webvpn.bit.edu.cn` or `libvpn.bit.edu.cn` as prefix to the URL.
-* `redirect`: Either `true` or `false` (default). If `true`, the client will be redirected to the converted/encrypted URL directly.
+- `prefix`: Must be one of `web` (default) or `lib`. Adds either `webvpn.bit.edu.cn` or `libvpn.bit.edu.cn` as prefix to the URL.
+- `redirect`: Either `true` or `false` (default). If `true`, the client will be redirected to the converted/encrypted URL directly.
 
 ### Example
 
@@ -43,5 +43,5 @@ pnpm build
 
 ## Changelog
 
-* `May 3, 2022` - Add support for forward converter and reverse *retrevnoc*.
-* `Apr 29, 2022` - Migrate from Vue to Next.js with Tailwind CSS.
+- `May 3, 2022` - Add support for forward converter and reverse _retrevnoc_.
+- `Apr 29, 2022` - Migrate from Vue to Next.js with Tailwind CSS.
