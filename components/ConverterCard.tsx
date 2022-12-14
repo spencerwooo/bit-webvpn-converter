@@ -55,7 +55,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
   return (
     <>
       <div className="border border-zinc-400/30 p-4 rounded-lg">
-        <label className="text-xs font-medium uppercase tracking-wider text-gray-300">
+        <label className="text-xs font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300">
           Original URL
         </label>
         <input
@@ -71,10 +71,10 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
             setEnteredUrl(e.target.value)
             debounced(e.target.value, urlPrefix)
           }}
-          className={`bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none block w-full my-2 p-2 transition-all duration-150 ${
+          className={`dark:bg-zinc-800 border border-zinc-400/30 dark:border-zinc-700 dark:text-zinc-300 rounded focus:outline-none block w-full my-2 p-2 transition-all duration-50 ${
             reverse
-              ? 'focus:ring-purple-200 focus:border-purple-200'
-              : 'focus:ring-orange-200 focus:border-orange-200'
+              ? 'focus:ring-purple-400 focus:border-purple-400'
+              : 'focus:ring-orange-400 focus:border-orange-400'
           }`}
           required
           autoFocus
@@ -84,15 +84,15 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
           <RiSubtractLine className="h-5 rotate-90 mx-auto" />
           {reverse ? (
             <div className="text-center">
-              <span className="px-2 py-1 font-nanum text-xl rounded bg-zinc-800">
+              <span className="px-2 py-1 font-nanum text-xl rounded dark:bg-zinc-800">
                 decrypt
               </span>
             </div>
           ) : (
-            <div className="p-1 font-nanum text-xl rounded bg-zinc-700 grid grid-cols-2">
+            <div className="p-1 font-nanum text-xl rounded bg-zinc-100 dark:bg-zinc-700 grid grid-cols-2">
               <button
-                className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
-                  urlPrefix === prefix.web ? 'bg-zinc-900' : 'bg-zinc-700'
+                className={`rounded opacity-80 hover:opacity-100 transition-all duration-50 ${
+                  urlPrefix === prefix.web ? 'bg-zinc-300 dark:bg-zinc-900' : 'bg-zinc-100 dark:bg-zinc-700'
                 }`}
                 onClick={() => {
                   setUrlPrefix(prefix.web)
@@ -102,8 +102,8 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 Web VPN
               </button>
               <button
-                className={`rounded opacity-80 hover:opacity-100 transition-all duration-150 ${
-                  urlPrefix === prefix.lib ? 'bg-zinc-900' : 'bg-zinc-700'
+                className={`rounded opacity-80 hover:opacity-100 transition-all duration-50 ${
+                  urlPrefix === prefix.lib ? 'bg-zinc-300 dark:bg-zinc-900' : 'bg-zinc-100 dark:bg-zinc-700'
                 }`}
                 onClick={() => {
                   setUrlPrefix(prefix.lib)
@@ -122,7 +122,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
         </label>
         <div className="mt-2 flex items-center relative">
           <span
-            className={`absolute top-0 bottom-0 left-0 right-0 bg-zinc-900/60 flex items-center justify-center transition-all duration-150 ${
+            className={`rounded absolute top-0 bottom-0 left-0 right-0 bg-zinc-300/90 dark:bg-zinc-900/90 flex items-center justify-center transition-all duration-50 ${
               userEntering ? 'opacity-100' : 'opacity-0 -z-10'
             }`}
           >
@@ -132,12 +132,12 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
           <input
             type="url"
             value={convertedUrl}
-            className={`cursor-not-allowed bg-zinc-800 border border-zinc-700 rounded block w-full p-2 ${
+            className={`cursor-not-allowed dark:bg-zinc-800 border border-zinc-400/30 dark:border-zinc-700 rounded block w-full p-2 ${
               decryptionError && 'text-red-400'
             } ${
               reverse
-                ? 'text-purple-100 focus:ring-purple-500 focus:border-purple-500'
-                : 'text-orange-100 focus:ring-yellow-500 focus:border-yellow-500'
+                ? 'text-purple-400 dark:text-purple-100 focus:ring-purple-500 focus:border-purple-500'
+                : 'text-orange-400 dark:text-orange-100 focus:ring-yellow-500 focus:border-yellow-500'
             }`}
             disabled
             readOnly
@@ -151,7 +151,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 setHistory(Array.from(new Set([...history, enteredUrl])))
               }
             }}
-            className="flex items-center pl-3 pr-2 hover:opacity-80 transition-all duration-150 disabled:opacity-60"
+            className="flex items-center pl-3 pr-2 hover:opacity-80 transition-all duration-50 disabled:opacity-60"
             disabled={userEntering || decryptionError}
           >
             {isCopied ? <RiCheckLine /> : <RiClipboardLine />}{' '}
@@ -164,7 +164,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 setHistory(Array.from(new Set([...history, enteredUrl])))
               }
             }}
-            className="flex items-center pl-1 pr-2 hover:opacity-80 transition-all duration-150 disabled:opacity-60"
+            className="flex items-center pl-1 pr-2 hover:opacity-80 transition-all duration-50 disabled:opacity-60"
             disabled={userEntering || decryptionError}
           >
             <RiExternalLinkLine className="inline-block" />
@@ -175,14 +175,14 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
 
       {history.length > 0 && !reverse && (
         <div className="my-4 text-sm">
-          <label className="font-medium uppercase tracking-wider text-gray-300">
+          <label className="font-medium uppercase tracking-wider text-gray-600 dark:text-gray-300">
             History
           </label>
           <div className="flex flex-wrap gap-2 mt-2">
             {history.map((url: string, index: number) => (
               <div
                 key={index}
-                className="flex items-center bg-zinc-800 border border-zinc-700 text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-150"
+                className="flex items-center dark:bg-zinc-800 border border-zinc-400/30 dark:border-zinc-700 dark:text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-50"
               >
                 <button
                   className="tracking-wider p-2 text-left break-all"
@@ -196,14 +196,14 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 </button>
 
                 <button
-                  className="p-1 h-full group rounded bg-orange-300/20 hover:bg-orange-300 transition-all duration-150"
+                  className="p-1 h-full group rounded bg-orange-400 hover:opacity-80 transition-all duration-50"
                   onClick={() => {
                     setHistory(
                       history.filter((_: string, i: number) => i !== index)
                     )
                   }}
                 >
-                  <RiDeleteBin2Line className="group-hover:text-zinc-900" />
+                  <RiDeleteBin2Line />
                 </button>
               </div>
             ))}

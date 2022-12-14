@@ -19,7 +19,7 @@ const NavLink = ({
     : {}
   const elem = (
     <a
-      className="p-2 text-center text-sm font-medium uppercase tracking-wider rounded text-orange-50 hover:bg-gray-100 hover:text-gray-800 transition-all duration-150"
+      className="p-2 text-center text-sm font-medium uppercase tracking-wider rounded dark:text-orange-50 hover:opacity-80 transition-all duration-50"
       {...options}
     >
       {children}

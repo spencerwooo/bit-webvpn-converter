@@ -16,16 +16,16 @@ const Home: NextPage = () => {
         <title>Web VPN - converter</title>
       </Head>
 
-      <ShootingStars />
+      {/* <ShootingStars /> */}
 
       <div className="relative">
-        <h1 className="font-black text-3xl md:text-5xl text-center leading-tight bg-clip-text text-transparent bg-gradient-to-tr from-orange-100 via-orange-200 to-gray-50">
+        <h1 className="font-black text-3xl md:text-5xl text-center leading-tight bg-clip-text text-transparent bg-gradient-to-tr from-orange-200 via-orange-400 to-gray-50">
           Web VPN Converter.
         </h1>
         <div className="absolute -rotate-12 -top-10 right-0 md:right-10 text-4xl font-nanum">for BIT</div>
       </div>
 
-      <p className="text-center leading-2 py-4 lg:leading-6 text-gray-400">
+      <p className="text-center leading-2 py-4 lg:leading-6 text-gray-700 dark:text-gray-400">
         <span className="hidden md:block">
           Convert BIT local network URLs into Web VPN URLs. <br />
         </span>
