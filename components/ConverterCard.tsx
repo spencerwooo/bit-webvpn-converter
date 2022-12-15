@@ -16,7 +16,7 @@ import { useLocalStorageObject } from 'react-use-window-localstorage'
 
 const prefix = {
   web: 'https://webvpn.bit.edu.cn',
-  lib: 'https://libvpn.bit.edu.cn',
+  lib: 'https://nlibvpn.bit.edu.cn',
 }
 
 const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
