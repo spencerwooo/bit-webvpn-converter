@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fontsource/nanum-pen-script': ^4.5.7
   '@types/aes-js': ^3.1.1
-  '@types/node': 18.14.5
+  '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   aes-js: ^3.1.2
@@ -38,7 +38,7 @@ dependencies:
 
 devDependencies:
   '@types/aes-js': 3.1.1
-  '@types/node': 18.14.5
+  '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.13_postcss@8.4.20
@@ -291,8 +291,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node/18.14.5:
-    resolution: {integrity: sha512-CRT4tMK/DHYhw1fcCEBwME9CSaZNclxfzVMe7GsO6ULSwsttbj70wSiX6rZdIjGblu93sTJxLdhNIT85KKI7Qw==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
     dev: true
 
   /@types/prop-types/15.7.5:
