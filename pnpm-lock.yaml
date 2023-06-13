@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@fontsource/nanum-pen-script':
-    specifier: ^4.5.7
-    version: 4.5.7
+    specifier: ^5.0.0
+    version: 5.0.0
   aes-js:
     specifier: ^3.1.2
     version: 3.1.2
@@ -128,8 +128,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/nanum-pen-script@4.5.7:
-    resolution: {integrity: sha512-2yezOuLRsxb5jgbA/iIjvrDOAwpjfSdshU9YD8zzZ2TRCh7XeCKJArAJaxp9IhD5DbMnKwnc5EMoswq5l0TeaA==}
+  /@fontsource/nanum-pen-script@5.0.0:
+    resolution: {integrity: sha512-eUqkp/sbe9w89kHDrdZjJ44f6wGs7PwC35EkTJBzEQ5Sqx1AfFAKTS4CUCyB805QoJsitxthr2ptEtRDJXWBJw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
