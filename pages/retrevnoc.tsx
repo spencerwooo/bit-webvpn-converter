@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ShootingStars from '../components/ShootingStars'
+// import ShootingStars from '../components/ShootingStars'
 import ConverterCard from '../components/ConverterCard'
 
 const Retrevnoc = () => {

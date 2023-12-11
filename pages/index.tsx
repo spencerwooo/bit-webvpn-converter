@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import ShootingStars from '../components/ShootingStars'
+// import ShootingStars from '../components/ShootingStars'
 import ConverterCard from '../components/ConverterCard'
 
 const Home: NextPage = () => {
