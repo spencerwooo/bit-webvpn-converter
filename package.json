@@ -10,16 +10,16 @@
     "format": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@fontsource/nanum-pen-script": "^4.5.7",
+    "@fontsource/nanum-pen-script": "^5.0.11",
     "aes-js": "^3.1.2",
     "lottie-react": "^2.4.0",
-    "next": "13.5.6",
+    "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.12.0",
     "react-use-clipboard": "^1.0.9",
     "react-use-window-localstorage": "^1.0.18",
-    "use-debounce": "^9.0.2"
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@types/aes-js": "^3.1.4",
