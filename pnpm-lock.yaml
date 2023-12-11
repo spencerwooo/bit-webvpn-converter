@@ -33,8 +33,8 @@ dependencies:
     specifier: ^1.0.18
     version: 1.0.18(react-dom@18.2.0)(react@18.2.0)
   use-debounce:
-    specifier: ^9.0.2
-    version: 9.0.2(react@18.2.0)
+    specifier: ^10.0.0
+    version: 10.0.0(react@18.2.0)
 
 devDependencies:
   '@types/aes-js':
@@ -2667,9 +2667,9 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /use-debounce@9.0.2(react@18.2.0):
-    resolution: {integrity: sha512-QLyB0sxt9F5AisGDrUybCRJSLE60bTQR0yXc+IebNGUu1GCXwii1zsZl82mPGdWqDVQy7+1FKMLHQUixxf5Nbw==}
-    engines: {node: '>= 10.0.0'}
+  /use-debounce@10.0.0(react@18.2.0):
+    resolution: {integrity: sha512-XRjvlvCB46bah9IBXVnq/ACP2lxqXyZj0D9hj4K5OzNroMDpTEBg8Anuh1/UfRTRs7pLhQ+RiNxxwZu9+MVl1A==}
+    engines: {node: '>= 16.0.0'}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
